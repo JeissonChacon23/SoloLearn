@@ -1,9 +1,12 @@
 import Foundation
 
-let name:String = "Jeisson"
-var age:Int = 23
+//var is used to declare a variable
+//let is used to declare a constant that after its value was asigned cannot be changed
 
-print("Hello, world!")
-print(name)
-print(age)
-print("\(name) is \(age) years old")
+var num:Int = 4
+num = 5
+print(num)
+
+let pi:Double = 3.1416
+//pi = 3.00000 --> Error
+print(pi)
