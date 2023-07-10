@@ -1,23 +1,11 @@
 import Foundation
 
-//Int
-var x:Int = 23
-var y = 23
-
-//Double
-var m:Double = 3.0
-var n = 3.0
-var red, blue, green:Double
-
-//Float
-var a:Float = 4.0
-
-//Bool
-var young:Bool = true
-young = false
-print(young)
-
-//String
-var name:String = "Jeisson"
-var lastName = "Chacon"
-print(name, lastName)
+//Comparison Operators
+var a = 1
+var b = 3
+var c = (a == b)
+var d = (a != b)
+var e = (a <= b)
+var f = (a >= b)
+var g = (a > b)
+var h = (a < b)
