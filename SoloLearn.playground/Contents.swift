@@ -1,11 +1,11 @@
 import Foundation
 
-//Comparison Operators
-var a = 1
-var b = 3
-var c = (a == b)
-var d = (a != b)
-var e = (a <= b)
-var f = (a >= b)
-var g = (a > b)
-var h = (a < b)
+//Ternary conditional operators
+var gender = 1
+gender == 0 ? print("male") : print("female")
+
+let height = 40
+let isCheck = true
+let rowHeight = height + (isCheck ? 50 : 20)
+
+
