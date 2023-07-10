@@ -1,11 +1,13 @@
 import Foundation
 
-//Ternary conditional operators
-var gender = 1
-gender == 0 ? print("male") : print("female")
+//Range Operators
+//1...3  --> 1,2,3
+//1..<3  --> 1,2
 
-let height = 40
-let isCheck = true
-let rowHeight = height + (isCheck ? 50 : 20)
-
-
+//Logical Operators
+var state = true
+!state
+var a = false
+var b = true
+state = a && b
+state = a || b
