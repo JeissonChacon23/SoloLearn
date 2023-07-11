@@ -1,22 +1,22 @@
 import Foundation
 
-//Where
-let myPoint = (1, -1)
-switch myPoint {
-   case let (x, y) where x == y:
-      print("(\(x), \(y)) is on the line x == y")
-   case let (x, y) where x == -y:
-     print("(\(x), \(y)) is on the line x == -y")
-   case let (x, y):
-     print("(\(x), \(y)) is just some arbitrary point")
+//While
+var a = 1
+var b = 10
+while a < b{
+    print(a)
+    a += 1
 }
 
-let currentPoin = (1, 2)
-switch currentPoin{
-case let (x, y) where (x > y):
-        print("A")
-case let (x, y) where (x == y):
-        print("B")
-default:
-    print("C")
-}
+//Repeat while
+var x = 5
+repeat{
+    print(x)
+    x -= 1
+}while x > 0
+
+var i = 1, n = 3
+repeat {
+   print(i)
+   i+=1
+} while i < n
