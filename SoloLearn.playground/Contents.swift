@@ -1,6 +1,18 @@
 import Foundation
 
-//Optionals
-var myCode:Int? = 404
-myCode = nil
-var someMsg: String?
+//Conditinal Statements
+//if
+var temp = 25
+if temp <= 30{
+    print("It's cold")
+}
+
+//else if
+var cardValue = 11
+if cardValue == 1{
+    print("Jack")
+} else if cardValue == 12{
+    print("Queen")
+} else{
+    print("No found")
+}
