@@ -1,18 +1,12 @@
 import Foundation
 
-//Conditinal Statements
-//if
-var temp = 25
-if temp <= 30{
-    print("It's cold")
-}
-
-//else if
-var cardValue = 11
-if cardValue == 1{
-    print("Jack")
-} else if cardValue == 12{
-    print("Queen")
-} else{
-    print("No found")
+//switch
+var distance = 4
+switch distance{
+case 0:
+    print("No a valid distance")
+case 1...5:
+    print("Near")
+default:
+    print("Too far")
 }
