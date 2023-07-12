@@ -1,65 +1,34 @@
 import Foundation
 
-//Arrays
-var someInts = [Int]()
-var fourDoubles = [Double](repeating: 0.0, count: 4)
-print(fourDoubles)
-var fourStrigns = [String](repeating: "Hello", count: 4)
-print(fourStrigns)
+//Set
+var letters = Set<Character>()
+print(letters)
 
-//Array Literal
-var shopingList: [String] = ["Coffe", "Milk", "Bread", "Flour"]
-print(shopingList)
-var shoping = ["Shirt", "Pants", "Socks", "Hat"]
-print(shoping)
-print(shoping + shopingList)
-
-//Accessing and modifing an Array
-print(shoping.count)
-if shopingList.isEmpty{
-    print("The shoping list is empty")
-} else{
-    print("The shoping list isn't empty")
-}
-
-//Append
-shopingList.append("Salt")
-print(shopingList)
-shopingList += ["Sugar"]
-print(shopingList)
-
-//Accessing
-var firtsVariable = shopingList[0]
-print(shopingList[0])
-//shopingList[0] = "Tomatoes"
-shopingList[1...3] = ["Banana", "Oranges", "Mango"]
-print(shopingList)
-shopingList[1...3] = ["Banana", "Oranges"]
-print(shopingList)
+var names: Set<String> = ["David", "Susan", "Robert"]
+//var names: Set = ["David", "Susan", "Robert"]
 
 //Insert
-shopingList.insert("Rice", at: 0)
-print(shopingList)
+names.insert("Paul")
+print(names)
+
+//Contains
+if names.contains("David"){
+    print("David is here.")
+} else{
+    print("David isn't with us.")
+}
+
+//Iterating over a Set
+for name in names{
+    print(name)
+}
+for name in names.sorted(){
+    print(name)
+}
 
 //Remove
-let someFood = shopingList.remove(at: 0)
-shopingList.remove(at: 0)
-print(shopingList)
-shopingList.remove(at: 0)
-print(shopingList)
-
-//Remove Last
-shopingList.removeLast()
-print(shopingList)
-
-//Iterating over an Array
-for index in shopingList{
-    print(index)
-}
-for index in shoping{
-    print(index)
-}
-
-for (index, value) in shoping.enumerated(){
-    print("Item \(index) : \(value) ")
-}
+names.remove("Paul")
+names.remove("Susan")
+print(names)
+names.removeAll()
+print(names)
