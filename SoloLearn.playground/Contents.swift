@@ -1,32 +1,65 @@
 import Foundation
 
-//Strings
-var someString = "Hello, World!"
-var myStrign = String() //This is an empty Strign
-var anotherEmptyString = ""
-if anotherEmptyString.isEmpty{
-    print("Is empty")
+//Arrays
+var someInts = [Int]()
+var fourDoubles = [Double](repeating: 0.0, count: 4)
+print(fourDoubles)
+var fourStrigns = [String](repeating: "Hello", count: 4)
+print(fourStrigns)
+
+//Array Literal
+var shopingList: [String] = ["Coffe", "Milk", "Bread", "Flour"]
+print(shopingList)
+var shoping = ["Shirt", "Pants", "Socks", "Hat"]
+print(shoping)
+print(shoping + shopingList)
+
+//Accessing and modifing an Array
+print(shoping.count)
+if shopingList.isEmpty{
+    print("The shoping list is empty")
+} else{
+    print("The shoping list isn't empty")
 }
 
-//Concatenation
-let string1 = "Hello"
-let string2 = " World"
-print(string1 + string2)
+//Append
+shopingList.append("Salt")
+print(shopingList)
+shopingList += ["Sugar"]
+print(shopingList)
 
-var msg = "Hello"
-msg += " World"
+//Accessing
+var firtsVariable = shopingList[0]
+print(shopingList[0])
+//shopingList[0] = "Tomatoes"
+shopingList[1...3] = ["Banana", "Oranges", "Mango"]
+print(shopingList)
+shopingList[1...3] = ["Banana", "Oranges"]
+print(shopingList)
 
-//Interpolation
-let mult = 4
-let message = "\(mult) times 1.5 is \(Double(mult) * 1.5)"
-print(message)
+//Insert
+shopingList.insert("Rice", at: 0)
+print(shopingList)
 
-//Counting characters
-print(message.count)
+//Remove
+let someFood = shopingList.remove(at: 0)
+shopingList.remove(at: 0)
+print(shopingList)
+shopingList.remove(at: 0)
+print(shopingList)
 
-//Comparing Strings
-if string1 == string2{
-    print("Equals")
-} else{
-    print("Aren't equals")
+//Remove Last
+shopingList.removeLast()
+print(shopingList)
+
+//Iterating over an Array
+for index in shopingList{
+    print(index)
+}
+for index in shoping{
+    print(index)
+}
+
+for (index, value) in shoping.enumerated(){
+    print("Item \(index) : \(value) ")
 }
