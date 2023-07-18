@@ -1,17 +1,28 @@
 import Foundation
 
-//Set opetations
-let oddDigits: Set = [1, 3, 5, 7, 9]
-let evenDigits: Set = [0, 2, 4, 6, 8]
+//Dictionaries
+//var airport = [Int: String]()
+//var airports: [String: String] = ["TOR":  "Toronto", "NY": "New York"]
+//var persona: [Int: String] = [1094277015: "Jeisson Chacon"]
 
-print("Set 1 contains \(oddDigits)")
-print("Set 2 contains \(evenDigits)")
-print(oddDigits.union(evenDigits).sorted())
-print(oddDigits.intersection(evenDigits).sorted())
-print(oddDigits.symmetricDifference(evenDigits).sorted())
-print(oddDigits.subtracting(evenDigits).sorted())
-
-let a: Set = ["A", "B", "C"]
-var b: Set = ["B", "D", "E", "A"]
-print(b.subtracting(a))
-print(b.subtracting(a).count)
+var airports = ["TOR":  "Toronto", "NY": "New York"]
+airports["LHR"] = "London"
+print(airports)
+airports["LHR"] = "London Heathrow"
+print(airports)
+let oldValue = airports.updateValue("New York Airport", forKey: "NY")
+print(airports)
+let airportName = airports["NY"]
+print(airportName)
+airports["LHR"] = "London"
+airports["APL"] = "Apple"
+airports["APL"] = nil
+print(airports)
+if let removedValue = airports.removeValue(forKey: "NY") {
+   print("The removed airport's name is \(removedValue).")
+} else {
+   print("The airports dictionary does not contain a value for NY.")
+}
+var test = [1:"A", 2:"B", 3:"C"]
+test[3] = nil
+print(test.count)
