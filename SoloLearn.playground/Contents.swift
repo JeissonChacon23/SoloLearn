@@ -1,47 +1,57 @@
 import Foundation
 
-//Functions
-func sayHello(name: String) -> String{
-    let greeting = "Hello, " + name
-    return greeting
+//Functions external parameter names
+func someFunction(externalName localName: String){
+    //func can use localName
 }
 
-print(sayHello(name: "Chacon"))
-
-func rangeLenght(start: Int, end: Int) -> Int{
-    return end - start
+func sayhello(to parameter1: String, and parameter2: String) -> String{
+    return "Hello \(parameter1) and \(parameter2)"
 }
-print(rangeLenght(start: 2, end: 7))
+print(sayhello(to: "Jeisson", and: "Valentina"))
 
-func sayHelloWorld() ->String{
-    return "Hello, World!"
+func myFunc(a n1: Int, b n2: Int) -> Int{
+    return n1 * n2
 }
-print(sayHelloWorld())
+myFunc(a: 11, b: 27)
 
-func sayHi(name: String){
-    print("Hi! \(name)")
+//Default parameter values
+func someFunc(p1: Int = 12){
+    
 }
-sayHi(name: "Jeisson")
+someFunc() // 12
+someFunc(p1: 6) // 6
 
-func minMax(array: [Int]) -> (min: Int, max: Int){
-    var min = array[0]
-    var max = array[0]
-    for value in array[1 ..< array.count]{
-        if value < min{
-            min = value
-        }else if value > max{
-            max = value
-        }
+//Variadic parameters
+func arithmeticMean(numbers: Double...) -> Double{
+    var total: Double = 0
+    for number in numbers{
+        total += number
     }
-    return (min, max)
+    return total / Double(numbers.count)
 }
-print(minMax(array: [1, 2, 3, 4, -6, 11]))
-let bounds = minMax(array: [4, -4, 1, 88, 7, 42])
-bounds.min
-bounds.max
+arithmeticMean(numbers: 1.3, 1.4, 1.5, 1.6)
 
-func test(n1: Int, n2:Int) -> (a: Int, b: Int) {
-   return ((n1-n2), (n1+n2))
+//In-Out parameters
+func swapInts(a: inout Int, b: inout Int){
+    let tempA = a
+    a = b
+    b = tempA
 }
-let tmp = test(n1: 8, n2: 3)
-print(tmp.b)
+var a = 5
+var b = 6
+print("Before swap: a is \(a) and b is \(b)")
+swapInts(a: &a, b: &b)
+print("After swap: a is \(a) and b is \(b)")
+
+var someInt = 3
+var anotherInt = 107
+print("Before: \(someInt), \(anotherInt)")
+swapInts(a: &someInt, b: &anotherInt)
+print("After: \(someInt), \(anotherInt)")
+
+func calc(num: inout Int){
+    num *= 5
+}
+var x = 8
+calc(num: &x)
