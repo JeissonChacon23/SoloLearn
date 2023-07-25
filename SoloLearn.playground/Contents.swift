@@ -1,57 +1,80 @@
 import Foundation
 
-//Functions external parameter names
-func someFunction(externalName localName: String){
-    //func can use localName
+//Function types
+
+func addInts(a: Int, b: Int) -> Int{
+    return a + b
 }
 
-func sayhello(to parameter1: String, and parameter2: String) -> String{
-    return "Hello \(parameter1) and \(parameter2)"
+func multiplyInts(a: Int, b: Int) -> Int{
+    return a * b
 }
-print(sayhello(to: "Jeisson", and: "Valentina"))
+print(addInts(a: 4, b: 5))
+print(multiplyInts(a: 2, b: 5))
 
-func myFunc(a n1: Int, b n2: Int) -> Int{
-    return n1 * n2
+func printHelloWorld(){
+    print("Hello, world!")
 }
-myFunc(a: 11, b: 27)
+printHelloWorld()
 
-//Default parameter values
-func someFunc(p1: Int = 12){
-    
+//Using function type
+var mathFunction: (Int, Int) -> Int = addInts
+
+print(mathFunction(5, 6))
+print("Result: \(mathFunction(2, 3))")
+
+func printResult(mathFunction: (Int, Int) -> Int, a: Int, b: Int){
+    print("Result: \(mathFunction(a, b))")
 }
-someFunc() // 12
-someFunc(p1: 6) // 6
+printResult(mathFunction: addInts, a: 3, b: 5)
 
-//Variadic parameters
-func arithmeticMean(numbers: Double...) -> Double{
-    var total: Double = 0
-    for number in numbers{
-        total += number
+var prueba: (Int, Int) -> Int = multiplyInts
+print(prueba(6, 6))
+print(multiplyInts(a: 6, b: 6))
+
+//Function type as return type
+func plus(input: Int) -> Int{
+    return input + 1
+}
+
+func minus(input: Int) -> Int{
+    return input - 1
+}
+
+func chooseFunc(flag: Bool) -> (Int) -> Int{
+    if flag{
+        return plus
+    }else{
+        return minus
     }
-    return total / Double(numbers.count)
 }
-arithmeticMean(numbers: 1.3, 1.4, 1.5, 1.6)
+var f = chooseFunc(flag: false)
+print(f(42))
 
-//In-Out parameters
-func swapInts(a: inout Int, b: inout Int){
-    let tempA = a
-    a = b
-    b = tempA
+//Nested function
+
+/*func chooseFunc(flag: Bool) -> (Int) -> Int {
+
+   func plus(input: Int) -> Int { return input + 1 }
+   func minus(input: Int) -> Int { return input - 1 }
+   
+   if(flag) {
+     return plus
+   }
+   else {
+     return minus
+   }
 }
-var a = 5
-var b = 6
-print("Before swap: a is \(a) and b is \(b)")
-swapInts(a: &a, b: &b)
-print("After swap: a is \(a) and b is \(b)")
+print(chooseFunc(flag: true)(42))*/
 
-var someInt = 3
-var anotherInt = 107
-print("Before: \(someInt), \(anotherInt)")
-swapInts(a: &someInt, b: &anotherInt)
-print("After: \(someInt), \(anotherInt)")
-
-func calc(num: inout Int){
-    num *= 5
+//Recursion
+func factorial(num: Int) -> Int{
+    return num == 0 ? 1 : num * factorial(num: num-1)
 }
-var x = 8
-calc(num: &x)
+print(factorial(num: 5))
+
+func fib(n: Int) -> Int {
+  return n < 2 ? n : (fib(n: n-1) + fib(n: n-2))
+}
+print(fib(n: 3))
+
