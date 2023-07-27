@@ -1,22 +1,36 @@
 import Foundation
 
-//Quiz
-func myFunc(num: Int){
-    print(num)
+//Object Oriented Programming
+struct Resolution{
+    var width = 0
+    var height = 0
 }
 
-func myFunc1(p1: Int = 1, p2: Int = 2){
-    print(p1 * p2)
+class VideMode{
+    var resolution = Resolution()
+    var interlased = false
+    var framRate = 0.0
 }
 
-enum Planet{
-    case Mercury, Venus, Earth, Mars
-}
+var defaultRes: Resolution = Resolution()
+print(defaultRes)
+let someResolution = Resolution()
+let someVideoMode = VideMode()
+print(someVideoMode.interlased)
 
-let somePlanet = Planet.Earth
-switch somePlanet{
-case .Earth:
-    print("Mostry harmless")
-default:
-    print("Not a safe place for humans")
+struct Size{
+    var width = 0
+    var height = 0
 }
+let s1 = Size()
+let s2 = Size()
+
+//Accessing properties
+print(s1.width)
+print(someVideoMode.resolution.height)
+someVideoMode.resolution.height = 1080
+print(someVideoMode.resolution.height)
+
+let vga = Resolution(width: 640, height: 480)
+let mySize = Size()
+print(mySize.width)
