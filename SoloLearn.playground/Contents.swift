@@ -1,19 +1,22 @@
 import Foundation
 
-//Enumarations
-enum Compass{
-    case North
-    case South
-    case East
-    case West
+//Quiz
+func myFunc(num: Int){
+    print(num)
+}
+
+func myFunc1(p1: Int = 1, p2: Int = 2){
+    print(p1 * p2)
 }
 
 enum Planet{
-    case Mercury, Venus, Earth, Mars, Jupiter
+    case Mercury, Venus, Earth, Mars
 }
 
-var direccion = Compass.West
-
-enum Status{
-    case None, Online, OffLine
+let somePlanet = Planet.Earth
+switch somePlanet{
+case .Earth:
+    print("Mostry harmless")
+default:
+    print("Not a safe place for humans")
 }
