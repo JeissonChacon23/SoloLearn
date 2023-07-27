@@ -1,19 +1,19 @@
 import Foundation
 
-//Tuples
-let error = (404, "No found")
-print(error)
-let (statusCode, statusMessage) = error
-print(statusCode)
-print(statusMessage)
+//Enumarations
+enum Compass{
+    case North
+    case South
+    case East
+    case West
+}
 
-print(error.0)
-print(error.1)
+enum Planet{
+    case Mercury, Venus, Earth, Mars, Jupiter
+}
 
-let http200Status = (statusCode: 200, description: "OK")
-print(http200Status.statusCode)
-print(http200Status.description)
+var direccion = Compass.West
 
-let coords = (48, 27)
-let latitude = coords.0
-let longitude = coords.1
+enum Status{
+    case None, Online, OffLine
+}
