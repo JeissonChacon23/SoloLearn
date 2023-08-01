@@ -1,32 +1,72 @@
 import Foundation
 
 //Struct Vs. Class
-/*class Developer{
- let name: String
- var language: String
- 
- init(name: String, language: String){
- self.name = name
- self.language = language
- }
- }
- 
- let chacon = Developer(name: "Jeisson", language: "Swift")
- let chacon1 = chacon // A pesar de que se creo como una constante, cómo es una clase si la deja cambiar y asignarle un nuevo valor en la linea 17
- 
- chacon1.language = "Java"
- chacon.language
- chacon1.language //Se trata del mismo objeto ya que hay dos simbolos indicando al mismo objeto
- */
-
-struct Developer{
-    let name: String
-    var language: String
+struct Point{
+    var x: Double = 0
+    var y: Double = 0
 }
 
-let chacon = Developer(name: "Jeisson", language: "Swift")
-var chacon1 = chacon // Para poder hacer esto antes hay que crearlo como variable
+//Lazy stored properties
+func dataIporter() -> Int{
+    print("Data importer called")
+    return 4
+}
+class DataManager{
+    lazy var importer = dataIporter()
+    var data = [String]()
+}
 
-chacon1.language = "Java"
-chacon.language
-chacon1.language //Se trata objetos diferentes ya que hacen referencia a ubicaciones diferentes
+var dm = DataManager()
+print("Lazy property still no used")
+print(dm.importer)
+
+//Computed properties
+struct Shape{
+    var origin = Point()
+    var center: Point{
+        get{
+            return Point(x: origin.x/2, y: origin.y/2)
+        }
+        /*set(newCenter){
+            origin.x = newCenter.x/2
+            origin.y = newCenter.y/2
+        }*/
+        set{
+            origin.x = newValue.x/2
+            origin.y = newValue.y/2
+        }
+    }
+}
+var p = Point(x: 1.1, y: 2.2)
+var sh = Shape()
+sh.center = p
+print(sh.center)
+
+struct Cuboid{
+    var w = 0.0, h = 0.0, d = 0.0
+    var volume: Double{
+        get{
+            return w * h * d;
+        }
+    }
+}
+var c = Cuboid(w: 2, h: 5, d: 3)
+print(c.volume)
+
+class StepCounter {
+ var totalSteps: Int = 0 {
+   willSet(newSteps) {
+     print("About to set totalSteps to \(newSteps)")
+   }
+   didSet {
+     if totalSteps > oldValue {
+       print("Added \(totalSteps - oldValue) steps")
+     }
+   }
+ }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 50
+stepCounter.totalSteps = 150
+stepCounter.totalSteps = 420
+
