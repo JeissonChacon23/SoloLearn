@@ -1,50 +1,66 @@
 import Foundation
 
-//Subscripts
-struct TimesTable{
-    let multiplier: Int
-    subscript(index: Int) -> Int{
-        print(multiplier)
-        print(index)
-        return multiplier * index
+//Inheritance
+class Vehicule{
+    var currentSpeed = 0.0
+    var desc: String{
+        return "Traveling at \(currentSpeed) mph"
     }
-}
-let threeTimesTable = TimesTable(multiplier: 3)
-print(threeTimesTable[5])
-
-struct Matrix{
-    let rows: Int, columns: Int
-    var grid: [Double]
-    init(rows: Int, columns: Int){
-        self.rows = rows
-        self.columns = columns
-        grid = Array(repeating: 0.0, count: rows * columns)
-    }
-    
-    subscript(row: Int, column: Int) -> Double{
-        get{
-            print(row)
-            print(column)
-            print(rows)
-            print(columns)
-            return grid[(row * columns) + column]
-        }
-        set{
-            grid[(row * columns) + column] = newValue
-        }
+    func MakeNoise(){
+        print("Making some noise")
     }
 }
 
-var m = Matrix(rows: 2, columns: 2)
-m[0,0] = 1.1
-m[0,1] = 2.1
-print(m[0,0])
+var v = Vehicule()
+print(v.desc)
+v.MakeNoise()
 
-struct Test{
-    var num = 0
-    subscript(tmp: Int) -> Int {
-        return tmp*num
+class Bicycle: Vehicule{
+    var hasBasket = false
+}
+var b = Bicycle()
+print(b.desc)
+b.MakeNoise()
+
+let bicycle = Bicycle()
+bicycle.hasBasket = true
+bicycle.currentSpeed = 25.0
+print("Bicycle: \(bicycle.desc)")
+
+class Tandem: Bicycle{
+    var currNumOfPassanger = 0
+}
+let tandem = Tandem()
+tandem.hasBasket = true
+tandem.currNumOfPassanger = 2
+tandem.currentSpeed = 20.0
+print("Tandem: \(tandem.desc)")
+
+class Train: Vehicule{
+    override func MakeNoise() {
+        print("Choo Choo")
     }
 }
-var t = Test(num:8)
-print(t[2])
+var t = Train()
+print(t.MakeNoise())
+
+class Car: Vehicule{
+    var gear: Int = 1
+    override var desc: String{
+        return super.desc + "in gear \(gear)"
+    }
+}
+
+//Exercise
+class Person{
+    var name = ""
+    func hello(){
+        print("Hi! from Person")
+    }
+}
+class Student: Person{
+    var yeat = 0
+    override func hello() {
+        print("Hi! from Student")
+    }
+}
