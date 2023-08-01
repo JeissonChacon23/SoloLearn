@@ -1,66 +1,69 @@
 import Foundation
 
-//Inheritance
-class Vehicule{
-    var currentSpeed = 0.0
-    var desc: String{
-        return "Traveling at \(currentSpeed) mph"
-    }
-    func MakeNoise(){
-        print("Making some noise")
+//Initializations
+struct Fahrenheit{
+    var temp: Double
+    init(){
+        temp = 32.0
     }
 }
+var f = Fahrenheit()
+print(f.temp)
 
-var v = Vehicule()
-print(v.desc)
-v.MakeNoise()
-
-class Bicycle: Vehicule{
-    var hasBasket = false
-}
-var b = Bicycle()
-print(b.desc)
-b.MakeNoise()
-
-let bicycle = Bicycle()
-bicycle.hasBasket = true
-bicycle.currentSpeed = 25.0
-print("Bicycle: \(bicycle.desc)")
-
-class Tandem: Bicycle{
-    var currNumOfPassanger = 0
-}
-let tandem = Tandem()
-tandem.hasBasket = true
-tandem.currNumOfPassanger = 2
-tandem.currentSpeed = 20.0
-print("Tandem: \(tandem.desc)")
-
-class Train: Vehicule{
-    override func MakeNoise() {
-        print("Choo Choo")
+struct Celcius{
+    var tempInCelcius: Double
+    init(fromFahrenheit fahrenheit: Double){
+        print("Initializing from Fahrenheit")
+        tempInCelcius = (fahrenheit - 32.0) / 1.8
+    }
+    init(fromKelvin kelvin: Double){
+        print("Initializing from Kelvin")
+        tempInCelcius = kelvin - 273.15
     }
 }
-var t = Train()
-print(t.MakeNoise())
+let boilingPoint = Celcius(fromFahrenheit: 212.1)
+let freezindPoint = Celcius(fromKelvin: 273.15)
 
-class Car: Vehicule{
-    var gear: Int = 1
-    override var desc: String{
-        return super.desc + "in gear \(gear)"
+struct Size{
+    var width = 0.0, height = 0.0
+}
+let twoByTwo = Size(width: 2.0, height: 2.0)
+print("Width: \(twoByTwo.width)")
+print("Height: \(twoByTwo.height)")
+
+class SizeClass{
+    var width: Double, height: Double
+    init(w: Double, h: Double){
+        width = w
+        height = h
     }
 }
+let twoByTwoClass = SizeClass(w: 2.0, h: 2.0)
+print("Width: \(twoByTwoClass.width)")
+print("Height: \(twoByTwoClass.height)")
 
 //Exercise
 class Person{
-    var name = ""
-    func hello(){
-        print("Hi! from Person")
+    var age: Int
+    init(a: Int){
+        age = a
     }
 }
-class Student: Person{
-    var yeat = 0
-    override func hello() {
-        print("Hi! from Student")
+let p1 = Person(a: 18)
+let p2 = Person(a: 22)
+print(p1.age)
+
+//Required Initializers
+class SomeClass{
+    required init() {
+        print("This initializer is required")
     }
 }
+let s = SomeClass()
+
+class SomeSubClass: SomeClass{
+    required init() {
+        print("Subclass initializer must be required")
+    }
+}
+let ss = SomeSubClass()
