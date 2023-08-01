@@ -1,72 +1,71 @@
 import Foundation
 
-//Struct Vs. Class
+//Methods
+class Counter{
+    var count = 0
+    func increment(){
+        //count += 1
+        self.count += 1
+    }
+    func incrementBy(amount: Int){
+        count += amount
+    }
+    func reset(){
+        count = 0
+    }
+}
+var cnt = Counter()
+cnt.reset()
+cnt.increment()
+print(cnt.count)
+cnt.incrementBy(amount: 3)
+print(cnt.count)
+
+let counter = Counter()
+counter.increment()
+counter.incrementBy(amount: 5)
+counter.reset()
+print(counter.count)
+
+class Student{
+    var age = 0
+    func printAge(){
+        print(age)
+    }
+}
+var st = Student()
+st.printAge()
+
+//The self property
+//Line 8
 struct Point{
-    var x: Double = 0
-    var y: Double = 0
-}
-
-//Lazy stored properties
-func dataIporter() -> Int{
-    print("Data importer called")
-    return 4
-}
-class DataManager{
-    lazy var importer = dataIporter()
-    var data = [String]()
-}
-
-var dm = DataManager()
-print("Lazy property still no used")
-print(dm.importer)
-
-//Computed properties
-struct Shape{
-    var origin = Point()
-    var center: Point{
-        get{
-            return Point(x: origin.x/2, y: origin.y/2)
-        }
-        /*set(newCenter){
-            origin.x = newCenter.x/2
-            origin.y = newCenter.y/2
-        }*/
-        set{
-            origin.x = newValue.x/2
-            origin.y = newValue.y/2
-        }
+    var x = 0.0, y = 0.0
+    func isToTheRight(x: Double) -> Bool{
+        return self.x > x
+    }
+    mutating func moveByX(dx: Double, dy: Double){
+        x += dx
+        y += dy
     }
 }
-var p = Point(x: 1.1, y: 2.2)
-var sh = Shape()
-sh.center = p
-print(sh.center)
-
-struct Cuboid{
-    var w = 0.0, h = 0.0, d = 0.0
-    var volume: Double{
-        get{
-            return w * h * d;
-        }
+var p = Point()
+print(p.isToTheRight(x: 1.1))
+p.moveByX(dx: 2.2, dy: 2.4)
+print(p)
+//Modifying value type
+//Line 46 to 49  and 53 to 54
+struct Person{
+    var age = 0
+    mutating func addOne(){
+        age += 1
     }
 }
-var c = Cuboid(w: 2, h: 5, d: 3)
-print(c.volume)
 
-class StepCounter {
- var totalSteps: Int = 0 {
-   willSet(newSteps) {
-     print("About to set totalSteps to \(newSteps)")
-   }
-   didSet {
-     if totalSteps > oldValue {
-       print("Added \(totalSteps - oldValue) steps")
-     }
-   }
- }
+//Type Methods
+class SomeClass{
+    static func someTypeMethod(){
+        print("I'm a type method")
+    }
 }
-let stepCounter = StepCounter()
-stepCounter.totalSteps = 50
-stepCounter.totalSteps = 150
-stepCounter.totalSteps = 420
+SomeClass.someTypeMethod()
 
